@@ -529,8 +529,10 @@ def runccdl():
         icon_path = '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Install.app/Contents/Resources/CreativeCloudInstaller.icns'
     else:
         icon_path = '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/CDAudioVolumeIcon.icns'
-    shutil.copyfile(icon_path, os.path.join(install_app_path,
-                    'Contents', 'Resources', 'applet.icns'))
+    icon_path_dest = os.path.join(install_app_path,
+                    'Contents', 'Resources', 'applet.icns')
+    os.makedirs(os.path.dirname(icon_path_dest), exist_ok=True)
+    shutil.copyfile(icon_path, icon_path_dest)
 
     products_dir = os.path.join(
         install_app_path, 'Contents', 'Resources', 'products')
